@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroSense AI - Weather &amp; Alerts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#edeeef",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#765f59",
+                      "on-secondary": "#ffffff",
+                      "surface": "#f8f9fa",
+                      "on-tertiary-fixed": "#311300",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#ffb17d",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-secondary-fixed-variant": "#56423c",
+                      "error-container": "#ffdad6",
+                      "on-background": "#191c1d",
+                      "surface-dim": "#d9dadb",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#fadcd3",
+                      "tertiary-container": "#803e00",
+                      "surface-tint": "#3b6934",
+                      "on-surface": "#191c1d",
+                      "primary": "#154212",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2e3132",
+                      "surface-container-low": "#f3f4f5",
+                      "secondary": "#6f5a53",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#5e2b00",
+                      "on-surface-variant": "#42493e",
+                      "outline": "#72796e",
+                      "on-secondary-fixed": "#271813",
+                      "primary-container": "#2d5a27",
+                      "inverse-primary": "#a1d494",
+                      "secondary-container": "#fadcd3",
+                      "outline-variant": "#c2c9bb",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#bcf0ae",
+                      "background": "#f8f9fa",
+                      "on-primary-container": "#9dd090",
+                      "surface-container-highest": "#e1e3e4",
+                      "surface-bright": "#f8f9fa",
+                      "on-tertiary-fixed-variant": "#723600",
+                      "on-primary-fixed-variant": "#23501e",
+                      "tertiary-fixed-dim": "#ffb786",
+                      "tertiary-fixed": "#ffdcc6",
+                      "primary-fixed-dim": "#a1d494",
+                      "surface-variant": "#e1e3e4",
+                      "surface-container-high": "#e7e8e9",
+                      "on-primary-fixed": "#002201",
+                      "secondary-fixed-dim": "#ddc0b8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "base": "4px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "margin-desktop": "40px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "data-numeral": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.04em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-numeral": [
+                              "20px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased pb-32 md:pb-0">
+<!-- TopAppBar from JSON -->
+<header class="w-full top-0 sticky z-40 bg-surface shadow-sm border-b border-outline-variant">
+<div class="flex items-center justify-between px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="agriculture" data-weight="fill" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">AgroSense AI</span>
+</div>
+<!-- Desktop Navigation Area (Hidden on Mobile) -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="flex items-center gap-xs font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-xs font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">sensors</span>
+                    Sensors
+                </a>
+<a class="flex items-center gap-xs font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+                    Analysis
+                </a>
+<a class="flex items-center gap-xs font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">settings_remote</span>
+                    Control
+                </a>
+<a class="flex items-center gap-xs font-label-md text-label-md text-primary bg-primary-container/10 hover:bg-surface-container-low transition-colors px-2 py-1 rounded border-b-2 border-primary" href="#">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">notifications</span>
+                    Alerts
+                </a>
+</nav>
+<div class="flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small, circular avatar portrait of a modern farm operator wearing a clean professional polo shirt, well-lit with soft natural light against a neutral background. The image should convey reliability and professionalism consistent with a corporate modern agricultural aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvhSQZuyLpIN3NDb7uiU6SW9aBse8babc9tswJ_nCIuboeayYp7vAN-g7yax0LmIu_eSD16ZhpGEaVmkeydfmqQPl3dd34SghHZlWFXKLzQM7MVLHyP9g-pcl7E9raNEGTpO9aiK2FA4cjzda8cLnsgfWQDPDUlDDq0Qk7_IDE9QQ35kLZBHjRA2NeDnCQgj-de2LsxcKtU-SVT-qDzckDixvVHxqg1e6bDcfmNGNfuxuwU_-ceSP0WA"/>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-lg grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Header Section -->
+<div class="col-span-1 md:col-span-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-md mb-md">
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Weather &amp; Alerts</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time localized meteorological conditions and regional risk warnings.</p>
+</div>
+<!-- Preferences Toggle -->
+<div class="flex items-center gap-sm bg-surface-container-low border border-outline-variant rounded-lg p-sm shadow-sm w-full md:w-auto">
+<span class="material-symbols-outlined text-on-surface-variant">tune</span>
+<span class="font-label-md text-label-md text-on-surface-variant mr-sm">Notification Preferences</span>
+<label class="relative inline-flex items-center cursor-pointer ml-auto md:ml-0">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-outline-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<!-- Main Weather Card -->
+<div class="col-span-1 md:col-span-8 bg-surface rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="bg-[#F1F3F1] px-lg py-sm border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-label-md text-label-md text-on-surface">Current Conditions</h2>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Live Update</span>
+</div>
+</div>
+<div class="p-lg grid grid-cols-2 md:grid-cols-4 gap-lg items-center flex-grow">
+<!-- Temp -->
+<div class="col-span-2 md:col-span-1 flex flex-col items-center justify-center border-r border-outline-variant pr-lg">
+<span class="material-symbols-outlined text-[48px] text-on-surface mb-sm">partly_cloudy_day</span>
+<div class="font-display-lg text-display-lg text-primary tracking-tighter">72°</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase mt-xs">Sector Alpha</div>
+</div>
+<!-- Metrics -->
+<div class="col-span-2 md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-md">
+<div class="flex flex-col gap-xs p-md bg-surface-container-low rounded-lg border border-outline-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">humidity_mid</span>
+<span class="font-label-sm text-label-sm uppercase">Humidity</span>
+</div>
+<span class="font-data-numeral text-data-numeral text-on-surface">65%</span>
+<div class="h-1 w-full bg-outline-variant rounded-full mt-xs overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-xs p-md bg-surface-container-low rounded-lg border border-outline-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">air</span>
+<span class="font-label-sm text-label-sm uppercase">Wind Speed</span>
+</div>
+<span class="font-data-numeral text-data-numeral text-on-surface">12 <span class="text-sm font-normal text-on-surface-variant">mph NW</span></span>
+<div class="h-1 w-full bg-outline-variant rounded-full mt-xs overflow-hidden">
+<div class="h-full bg-primary w-[40%]"></div>
+</div>
+</div>
+<div class="col-span-2 md:col-span-1 flex flex-col gap-xs p-md bg-surface-container-low rounded-lg border border-outline-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">water_drop</span>
+<span class="font-label-sm text-label-sm uppercase">Precipitation</span>
+</div>
+<span class="font-data-numeral text-data-numeral text-on-surface">0.0 <span class="text-sm font-normal text-on-surface-variant">in</span></span>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Last 24h</div>
+</div>
+</div>
+</div>
+<!-- Spray Forecast Strip -->
+<div class="bg-primary-container/10 border-t border-primary-container/20 p-md flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">sprinkler</span>
+<span class="font-label-md text-label-md text-on-surface">24h Spray Window</span>
+</div>
+<div class="font-body-md text-body-md text-primary font-semibold">
+                     Optimal: <span class="text-on-surface">6:00 AM - 9:00 AM</span>
+</div>
+</div>
+</div>
+<!-- Alerts List Card -->
+<div class="col-span-1 md:col-span-4 bg-surface rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col h-full">
+<div class="bg-[#F1F3F1] px-md py-sm border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+                    Active Alerts
+                </h2>
+<span class="bg-error text-on-error font-label-sm text-label-sm px-2 py-0.5 rounded-full">2 New</span>
+</div>
+<div class="flex-grow flex flex-col">
+<!-- Alert 1 -->
+<div class="p-md border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors flex gap-md items-start group">
+<div class="w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center flex-shrink-0 group-hover:border-2 group-hover:border-error transition-all">
+<span class="material-symbols-outlined">bug_report</span>
+</div>
+<div>
+<div class="flex justify-between items-center mb-xs">
+<h3 class="font-label-md text-label-md text-on-surface">Regional Pest Outbreak</h3>
+<span class="font-label-sm text-label-sm text-error font-semibold">High Risk</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-2">Elevated aphid activity detected in neighboring sectors. Recommend preemptive scouting in Sector Beta.</p>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-sm">2 hours ago</div>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="p-md border-b border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors flex gap-md items-start group">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:border-2 group-hover:border-tertiary transition-all">
+<span class="material-symbols-outlined">ac_unit</span>
+</div>
+<div>
+<div class="flex justify-between items-center mb-xs">
+<h3 class="font-label-md text-label-md text-on-surface">Frost Alert</h3>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Watch</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-2">Temperatures projected to dip below 34°F between 2:00 AM and 5:00 AM.</p>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-sm">5 hours ago</div>
+</div>
+</div>
+</div>
+<div class="p-sm text-center border-t border-outline-variant">
+<button class="font-label-md text-label-md text-primary hover:underline">View Alert History</button>
+</div>
+</div>
+<!-- Map Snippet Card -->
+<div class="col-span-1 md:col-span-12 bg-surface rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col md:flex-row min-h-[300px]">
+<div class="w-full md:w-1/3 border-b md:border-b-0 md:border-r border-outline-variant flex flex-col">
+<div class="bg-[#F1F3F1] px-lg py-sm border-b border-outline-variant">
+<h2 class="font-label-md text-label-md text-on-surface">Sector Risk Mapping</h2>
+</div>
+<div class="p-lg flex-grow flex flex-col gap-md">
+<p class="font-body-md text-body-md text-on-surface-variant">Spatial visualization of active alerts and micro-climate risks across farm sectors.</p>
+<div class="flex flex-col gap-sm mt-auto">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-sm bg-error"></div>
+<span class="font-label-md text-label-md text-on-surface">High Risk</span>
+</div>
+<span class="font-data-numeral text-data-numeral text-on-surface-variant">1</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-sm bg-tertiary"></div>
+<span class="font-label-md text-label-md text-on-surface">Watch</span>
+</div>
+<span class="font-data-numeral text-data-numeral text-on-surface-variant">2</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-sm bg-primary"></div>
+<span class="font-label-md text-label-md text-on-surface">Optimal</span>
+</div>
+<span class="font-data-numeral text-data-numeral text-on-surface-variant">14</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Image Container -->
+<div class="w-full md:w-2/3 relative h-64 md:h-auto bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A highly detailed, clean, top-down satellite view of a large modern farm, divided into geometric field sectors. The color palette is muted and professional, emphasizing shades of primary green with subtle brown soil lines. A subtle, transparent red and orange heat-map overlay highlights specific risk zones. The lighting is neutral and bright, conveying a tactical, data-driven agricultural dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsQVLQjMYb1dathn6RvnvER9P058e4-84n7oeY29RIEhhAB1GAbkIYSOUIXmmgEMcoV9YHJk0IMtRC3T40uyCHjBq2P_r7tnTqIFX2KF_wwLLaF7fOyV8pX7Rse9uDuECflICfxtSaYF1VxO7VnEj6v9BqYg9KmwBaMID7LXsqcOLGq8_ZDXGO5i-3sOzd1IyNJyFQ0mPNEQDhA09APYITXWFJGYAueLlSymmRSj0I3B8w-iu7Th2Wzw"/>
+<!-- Overlay UI on Map -->
+<div class="absolute top-md right-md bg-surface/90 backdrop-blur-sm border border-outline-variant p-sm rounded-lg shadow-sm flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">layers</span>
+<span class="font-label-sm text-label-sm text-on-surface">Pest Risk Layer</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">device_thermostat</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Temp Gradient (Off)</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar from JSON (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 bg-surface border-t border-outline-variant shadow-lg px-2 pb-2 z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-label-sm text-label-sm">Sensors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Analysis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">settings_remote</span>
+<span class="font-label-sm text-label-sm">Control</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-label-sm text-label-sm">Alerts</span>
+</a>
+</nav>
+</body></html>

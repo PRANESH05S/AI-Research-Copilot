@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroSense AI - AI Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#56423c",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#3b6934",
+                    "secondary-fixed": "#fadcd3",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-container": "#9dd090",
+                    "surface-container-high": "#e7e8e9",
+                    "secondary-fixed-dim": "#ddc0b8",
+                    "on-primary-fixed-variant": "#23501e",
+                    "error-container": "#ffdad6",
+                    "primary": "#154212",
+                    "primary-fixed": "#bcf0ae",
+                    "surface-container": "#edeeef",
+                    "primary-fixed-dim": "#a1d494",
+                    "surface-container-low": "#f3f4f5",
+                    "inverse-primary": "#a1d494",
+                    "surface-variant": "#e1e3e4",
+                    "on-tertiary-fixed": "#311300",
+                    "primary-container": "#2d5a27",
+                    "surface-dim": "#d9dadb",
+                    "surface": "#f8f9fa",
+                    "secondary-container": "#fadcd3",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#42493e",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-fixed-variant": "#723600",
+                    "on-secondary-container": "#765f59",
+                    "tertiary": "#5e2b00",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#ffb786",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "tertiary-container": "#803e00",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-tertiary-container": "#ffb17d",
+                    "outline": "#72796e",
+                    "on-secondary-fixed": "#271813",
+                    "on-primary-fixed": "#002201",
+                    "outline-variant": "#c2c9bb",
+                    "inverse-on-surface": "#f0f1f2",
+                    "secondary": "#6f5a53"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "data-numeral": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "data-numeral": [
+                            "20px",
+                            {
+                                    "lineHeight": "24px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.04em",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background h-full font-sans antialiased overflow-x-hidden flex flex-col">
+<!-- TopAppBar (Hidden on mobile) -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flat no shadows docked full-width top-0 hidden md:block w-full z-40">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="agriculture" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">AgroSense AI</span>
+</div>
+<nav class="flex gap-lg">
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md px-sm py-xs rounded-DEFAULT" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md px-sm py-xs rounded-DEFAULT" href="#">Sensors</a>
+<a class="text-primary dark:text-primary-fixed font-bold hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md px-sm py-xs rounded-DEFAULT scale-95 duration-100" href="#">AI Analysis</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md px-sm py-xs rounded-DEFAULT" href="#">Control</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md px-sm py-xs rounded-DEFAULT" href="#">Alerts</a>
+</nav>
+<button class="font-label-md text-label-md text-primary dark:text-primary-fixed hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-sm py-xs rounded-DEFAULT">
+                Live Mode
+            </button>
+</div>
+</header>
+<!-- Top Header Mobile Only -->
+<header class="md:hidden flex justify-between items-center px-margin-mobile py-md bg-surface z-40 sticky top-0 border-b border-outline-variant">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="agriculture" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">AgroSense</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary">AI Analysis</span>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg md:py-xl pb-24 md:pb-xl flex flex-col gap-lg">
+<!-- Page Header -->
+<div class="flex flex-col gap-xs mb-md">
+<h1 class="font-headline-lg text-headline-lg md:font-display-lg md:text-display-lg text-on-surface">Experiment &amp; Data Collection</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">Manually verify AI results and collect new training samples from field sensors to improve predictive models.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Experiment Details Form (Left Column on Desktop) -->
+<div class="md:col-span-5 flex flex-col gap-lg">
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md md:p-lg flex flex-col gap-md shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="science">science</span>
+                        Session Context
+                    </h2>
+<div class="flex flex-col gap-md mt-sm">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface" for="experiment-id">Experiment ID</label>
+<input class="font-body-md text-body-md bg-surface rounded-DEFAULT border border-outline-variant px-sm py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-on-surface" id="experiment-id" type="text" value="EXP-2023-Q4-081"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface" for="crop-type">Crop Type</label>
+<select class="font-body-md text-body-md bg-surface rounded-DEFAULT border border-outline-variant px-sm py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-on-surface appearance-none" id="crop-type">
+<option value="wheat">Winter Wheat (Triticum aestivum)</option>
+<option value="corn">Corn (Zea mays)</option>
+<option value="soy">Soybean (Glycine max)</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface" for="ground-truth">Ground Truth Label</label>
+<input class="font-body-md text-body-md bg-surface rounded-DEFAULT border border-outline-variant px-sm py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-on-surface" id="ground-truth" placeholder="e.g., Healthy, Nitrogen Deficient, Blight" type="text"/>
+</div>
+<div class="flex flex-col gap-xs pt-sm">
+<span class="font-label-md text-label-md text-on-surface">Environmental Baselines</span>
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container p-sm rounded-DEFAULT flex items-center justify-between border border-outline-variant">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Temp</span>
+<span class="font-data-numeral text-data-numeral text-primary">22.4°C</span>
+</div>
+<div class="bg-surface-container p-sm rounded-DEFAULT flex items-center justify-between border border-outline-variant">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Humidity</span>
+<span class="font-data-numeral text-data-numeral text-primary">48%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Data Collection Triggers (Right Column on Desktop) -->
+<div class="md:col-span-7 flex flex-col gap-lg">
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md md:p-lg flex flex-col gap-md shadow-[0_2px_4px_rgba(0,0,0,0.05)] h-full">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="add_circle">add_circle</span>
+                        Capture Modalities
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mt-sm flex-grow">
+<!-- Image Capture -->
+<div class="bg-surface rounded-lg border border-outline-variant p-md flex flex-col justify-between group hover:border-primary transition-colors cursor-pointer relative overflow-hidden">
+<div class="absolute inset-0 bg-[#F1F3F1] opacity-0 group-hover:opacity-50 transition-opacity z-0"></div>
+<div class="relative z-10 flex flex-col gap-sm h-full">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="photo_camera" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded-full">Cam-04 (Multispectral)</span>
+</div>
+<div class="flex-grow flex flex-col justify-center my-md">
+<span class="font-label-md text-label-md font-bold text-on-surface">Visual / Spectral</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs text-sm">Capture hi-res RGB and NDVI imagery from the overhead gantry.</p>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md py-sm rounded-DEFAULT border-t border-primary-fixed-dim transition-colors flex items-center justify-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="capture">capture</span>
+                                    Collect Image Sample
+                                </button>
+</div>
+</div>
+<!-- Sound Capture -->
+<div class="bg-surface rounded-lg border border-outline-variant p-md flex flex-col justify-between group hover:border-primary transition-colors cursor-pointer relative overflow-hidden">
+<div class="absolute inset-0 bg-[#F1F3F1] opacity-0 group-hover:opacity-50 transition-opacity z-0"></div>
+<div class="relative z-10 flex flex-col gap-sm h-full">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="mic" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded-full">Mic-Array-A</span>
+</div>
+<div class="flex-grow flex flex-col justify-center my-md">
+<span class="font-label-md text-label-md font-bold text-on-surface">Acoustic Signature</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs text-sm">Record 10s audio snippet to detect pest activity or machinery anomalies.</p>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md py-sm rounded-DEFAULT border-t border-primary-fixed-dim transition-colors flex items-center justify-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="record_voice_over">record_voice_over</span>
+                                    Collect Sound Sample
+                                </button>
+</div>
+</div>
+<!-- Gas Capture -->
+<div class="bg-surface rounded-lg border border-outline-variant p-md flex flex-col justify-between group hover:border-primary transition-colors cursor-pointer relative overflow-hidden md:col-span-2">
+<div class="absolute inset-0 bg-[#F1F3F1] opacity-0 group-hover:opacity-50 transition-opacity z-0"></div>
+<div class="relative z-10 flex flex-col md:flex-row gap-md items-center h-full">
+<div class="flex-grow flex flex-col gap-sm w-full">
+<div class="flex justify-between items-start md:items-center">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="air" style="font-variation-settings: 'FILL' 1;">air</span>
+</div>
+<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded-full">Sniffer-Node-2</span>
+</div>
+<div class="flex flex-col justify-center mt-sm">
+<span class="font-label-md text-label-md font-bold text-on-surface">Volatile Organic Compounds (VOC)</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs text-sm">Sample soil outgassing to detect early signs of fungal infection or anaerobic conditions.</p>
+</div>
+</div>
+<div class="w-full md:w-auto flex-shrink-0">
+<button class="w-full md:w-auto px-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md py-sm rounded-DEFAULT border-t border-primary-fixed-dim transition-colors flex items-center justify-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="science">science</span>
+                                        Collect Gas Sample
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-base pb-safe bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-sm rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mb-xs" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mb-xs" data-icon="sensors">sensors</span>
+<span class="font-label-sm text-label-sm">Sensors</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined mb-xs" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-label-sm text-label-sm">AI Analysis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mb-xs" data-icon="settings_remote">settings_remote</span>
+<span class="font-label-sm text-label-sm">Control</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mb-xs" data-icon="notifications">notifications</span>
+<span class="font-label-sm text-label-sm">Alerts</span>
+</a>
+</nav>
+</body></html>

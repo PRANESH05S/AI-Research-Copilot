@@ -1,0 +1,53 @@
+ANALYSIS REPORT FOR: GAIT ANALYSIS.pdf
+
+1. Title & Scope
+The analysis focuses on examining the accuracy of a SoleSound measurement system compared to a reference system, including aspects like frequency distribution of measurement errors, correlation, and Bland-Altman plots for various parameters including ankle plantar/dorsiﬂexion and foot trajectory.
+
+2. Research Problem & Motivation
+The research aims to evaluate the accuracy of a SoleSound system in comparison to a reference system in measuring parameters like ankle plantar/dorsiﬂexion and foot trajectory. This evaluation is crucial for understanding the reliability and accuracy of the SoleSound system in clinical or biomechanical applications.
+
+3. Research Objectives
+The objectives include:
+- Determining the frequency distribution of measurement errors between SoleSound and the reference system.
+- Assessing the correlation between the SoleSound system and the reference system for various parameters.
+- Evaluating the accuracy of the SoleSound system using Bland-Altman plots for ankle plantar/dorsiﬂexion and foot trajectory measurements.
+
+4. Abstract Summary
+The study evaluates the accuracy of the SoleSound system in measuring ankle plantar/dorsiﬂexion and foot trajectory parameters compared to a reference system. Frequency distributions of measurement errors are analyzed, and Bland-Altman plots are used to determine the agreement between the systems. The analysis includes both averaged and representative subject data for SL, SH, and SW parameters. The results indicate the system’s reliability and strengths in clinical or biomechanical applications.
+
+5. Methodology & System Architecture
+Not explicitly detailed in the text.
+
+6. Datasets Used (or indicate if not specified)
+Datasets for SL, SH, and SW parameters are used, but the specific details of the datasets are not specified.
+
+7. Algorithms, AI Models & Mathematical Formulations
+Not explicitly detailed in the text.
+
+8. Tools, Frameworks & Hardware/Software Technologies
+Not explicitly detailed in the text.
+
+9. Experimental Setup & Evaluation Metrics
+- Evaluation metrics used include frequency distribution of measurement errors and Bland-Altman plots for various parameters.
+- The experiments involved SoleSound system measurements compared to reference system measurements for SL, SH, and SW parameters.
+- The frequency distributions and Bland-Altman plots were used to evaluate the accuracy of SoleSound in comparison to the reference system.
+
+10. Key Results & Findings
+- Frequency distribution of errors for SL, SH, and SW parameters are presented.
+- Bland-Altman plots show the average difference (green line) ±1.96 SD of the difference (red line) for SL, SH, and SW parameters.
+- The results indicate that the average difference in measurements is within the range of ±1.96 SD for all parameters, suggesting that SoleSound is highly accurate compared to the reference system.
+- The analysis includes both averaged and representative subject data for SL, SH, and SW parameters.
+
+11. Advantages & Strengths
+- The analysis demonstrates the reliability of the SoleSound system in measuring parameters like ankle plantar/dorsiﬂexion and foot trajectory.
+- The method used, including frequency distributions of measurement errors and Bland-Altman plots, provides a comprehensive evaluation of the system's accuracy.
+
+12. Limitations & Weaknesses
+- The study is limited to the specific parameters and parameters groups mentioned, which may not encompass the full range of SoleSound's capabilities.
+- The lack of detailed information about the datasets and specific experimental setup limits the scope of the analysis.
+
+13. Proposed Future Work
+Future work could include expanding the analysis to cover a broader range of parameters and subjects, as well as detailed investigations into the underlying algorithms and mathematical formulations used by the SoleSound system.
+
+14. Core Research Contribution
+The research contributes to the understanding of the reliability and accuracy of the SoleSound system in clinical and biomechanical applications by providing a detailed evaluation of its performance using frequency distributions and Bland-Altman plots.

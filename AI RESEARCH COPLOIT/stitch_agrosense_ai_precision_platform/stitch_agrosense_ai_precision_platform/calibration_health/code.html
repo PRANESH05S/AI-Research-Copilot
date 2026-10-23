@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sensor Calibration &amp; Health - AgroSense AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#56423c",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#3b6934",
+                    "secondary-fixed": "#fadcd3",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-container": "#9dd090",
+                    "surface-container-high": "#e7e8e9",
+                    "secondary-fixed-dim": "#ddc0b8",
+                    "on-primary-fixed-variant": "#23501e",
+                    "error-container": "#ffdad6",
+                    "primary": "#154212",
+                    "primary-fixed": "#bcf0ae",
+                    "surface-container": "#edeeef",
+                    "primary-fixed-dim": "#a1d494",
+                    "surface-container-low": "#f3f4f5",
+                    "inverse-primary": "#a1d494",
+                    "surface-variant": "#e1e3e4",
+                    "on-tertiary-fixed": "#311300",
+                    "primary-container": "#2d5a27",
+                    "surface-dim": "#d9dadb",
+                    "surface": "#f8f9fa",
+                    "secondary-container": "#fadcd3",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#42493e",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-fixed-variant": "#723600",
+                    "on-secondary-container": "#765f59",
+                    "tertiary": "#5e2b00",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#ffb786",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "tertiary-container": "#803e00",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-tertiary-container": "#ffb17d",
+                    "outline": "#72796e",
+                    "on-secondary-fixed": "#271813",
+                    "on-primary-fixed": "#002201",
+                    "outline-variant": "#c2c9bb",
+                    "inverse-on-surface": "#f0f1f2",
+                    "secondary": "#6f5a53"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "data-numeral": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "data-numeral": ["20px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Shared Styles based on Style Guidance */
+        .card-elevation {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E0E0E0;
+        }
+        .active-border {
+            border: 2px solid theme('colors.primary');
+        }
+        .btn-primary {
+            background-color: theme('colors.primary');
+            color: theme('colors.on-primary');
+            border-top: 1px solid theme('colors.primary-fixed');
+            transition: transform 0.1s ease-in-out;
+        }
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        .status-chip {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .status-connected {
+            background-color: theme('colors.primary-fixed');
+            color: theme('colors.on-primary-fixed');
+        }
+        .status-stale {
+            background-color: theme('colors.error-container');
+            color: theme('colors.on-error-container');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md sticky top-0 z-40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="agriculture" data-weight="fill" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">AgroSense AI</span>
+</div>
+<div>
+<button class="font-label-md text-label-md text-primary hover:bg-surface-container px-4 py-2 rounded transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                Live Mode
+            </button>
+</div>
+</header>
+<main class="container mx-auto px-margin-mobile md:px-margin-desktop py-lg">
+<!-- Header -->
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg mb-2">Sensor Calibration &amp; Health</h1>
+<p class="font-body-md text-on-surface-variant">Monitor and manage the health of your field sensor network.</p>
+</div>
+<!-- MQ-135 Highlight Section (Bento style) -->
+<section class="mb-xl grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 bg-surface card-elevation rounded-xl p-lg flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary" data-icon="air">air</span>
+<h2 class="font-headline-md text-headline-md">MQ-135 Gas Sensor</h2>
+</div>
+<span class="status-chip status-connected inline-block mb-4">CONNECTED</span>
+</div>
+<button class="btn-primary px-4 py-2 rounded-lg font-label-md text-label-md">Set Baseline</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-bright p-md rounded-lg border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Baseline Value</p>
+<p class="font-data-numeral text-data-numeral">330 <span class="text-sm font-normal text-on-surface-variant">ppm</span></p>
+</div>
+<div class="bg-surface-bright p-md rounded-lg border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Current Deviation</p>
+<p class="font-data-numeral text-data-numeral text-error">+47.5% <span class="material-symbols-outlined text-sm align-middle" data-icon="trending_up">trending_up</span></p>
+</div>
+</div>
+</div>
+<!-- Visualization placeholder for MQ-135 -->
+<div class="bg-surface card-elevation rounded-xl p-md flex items-center justify-center relative overflow-hidden h-64 md:h-auto">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full opacity-50 mix-blend-multiply" data-alt="A detailed digital data visualization chart showing a fluctuating line graph over a grid. The background is a clean, bright light-mode white with subtle grey grid lines. The main line is a precise, technical green, indicating sensor data over time. The mood is analytical, professional, and modern, fitting a high-tech agricultural interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0a8bFfi38vvI82dF03Atlgx3_3MViG_2yoLezVVDtGtcpL_oEM7e47IJuNn7uqpy8_eGLhnBYtNwEILJbnCfgh0KchmrA4WgoOFolfcTM4_Dyeg_aH_krTRicu3A-w5hU58uf103G_lXYiZJY3wQU0tJ9KEmgBUqe3xvfCctBt8fv6o5fexg8MNwrb1_eHnHO9yu0FBtSS62mdMM8ir5Lb1-fJ8TaXmhbvMSCfxFHZWBKjXShk8YQLQ')"></div>
+<div class="z-10 text-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-2" data-icon="bar_chart">bar_chart</span>
+<p class="font-label-md text-label-md text-on-surface-variant">Live Trend Analysis</p>
+</div>
+</div>
+</section>
+<!-- Sensor List -->
+<section>
+<h2 class="font-headline-md text-headline-md mb-md border-b border-outline-variant pb-2">Network Health</h2>
+<div class="flex flex-col gap-sm">
+<!-- Soil Moisture -->
+<div class="bg-surface card-elevation rounded-lg p-md flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4 w-full md:w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md">Soil Moisture</h3>
+<span class="status-chip status-connected">CONNECTED</span>
+</div>
+</div>
+<div class="w-full md:w-1/3 flex justify-between px-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Raw Reading</p>
+<p class="font-body-md text-body-md">42%</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Last Calibrated</p>
+<p class="font-body-md text-body-md">Oct 12, 2023</p>
+</div>
+</div>
+<div class="w-full md:w-auto text-right">
+<button class="bg-surface border border-outline hover:bg-surface-container text-on-surface px-4 py-2 rounded font-label-md text-label-md w-full md:w-auto">Calibrate</button>
+</div>
+</div>
+<!-- Leaf/Light -->
+<div class="bg-surface card-elevation rounded-lg p-md flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4 w-full md:w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="eco">eco</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md">Leaf/Light</h3>
+<span class="status-chip status-connected">CONNECTED</span>
+</div>
+</div>
+<div class="w-full md:w-1/3 flex justify-between px-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Raw Reading</p>
+<p class="font-body-md text-body-md">850 lux</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Last Calibrated</p>
+<p class="font-body-md text-body-md">Sep 05, 2023</p>
+</div>
+</div>
+<div class="w-full md:w-auto text-right">
+<button class="bg-surface border border-outline hover:bg-surface-container text-on-surface px-4 py-2 rounded font-label-md text-label-md w-full md:w-auto">Calibrate</button>
+</div>
+</div>
+<!-- Ultrasonic -->
+<div class="bg-surface card-elevation rounded-lg p-md flex flex-col md:flex-row items-center justify-between gap-4 border-l-4 border-l-error">
+<div class="flex items-center gap-4 w-full md:w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings_input_antenna">settings_input_antenna</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md">Ultrasonic</h3>
+<span class="status-chip status-stale">STALE</span>
+</div>
+</div>
+<div class="w-full md:w-1/3 flex justify-between px-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Raw Reading</p>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-50">-- cm</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Last Calibrated</p>
+<p class="font-body-md text-body-md text-error">Jan 10, 2023</p>
+</div>
+</div>
+<div class="w-full md:w-auto text-right">
+<button class="btn-primary px-4 py-2 rounded font-label-md text-label-md w-full md:w-auto">Calibrate</button>
+</div>
+</div>
+<!-- Sound -->
+<div class="bg-surface card-elevation rounded-lg p-md flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4 w-full md:w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="volume_up">volume_up</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md">Sound</h3>
+<span class="status-chip status-connected">CONNECTED</span>
+</div>
+</div>
+<div class="w-full md:w-1/3 flex justify-between px-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Raw Reading</p>
+<p class="font-body-md text-body-md">45 dB</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Last Calibrated</p>
+<p class="font-body-md text-body-md">Nov 20, 2023</p>
+</div>
+</div>
+<div class="w-full md:w-auto text-right">
+<button class="bg-surface border border-outline hover:bg-surface-container text-on-surface px-4 py-2 rounded font-label-md text-label-md w-full md:w-auto">Calibrate</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-base pb-safe bg-surface border-t border-outline-variant shadow-sm rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm mt-1">Dashboard</span>
+</a>
+<!-- Active Tab: Sensors -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="sensors" data-weight="fill" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="font-label-sm text-label-sm mt-1">Sensors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-sm text-label-sm mt-1">AI Analysis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings_remote">settings_remote</span>
+<span class="font-label-sm text-label-sm mt-1">Control</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-sm text-label-sm mt-1">Alerts</span>
+</a>
+</nav>
+<!-- Desktop Nav Cluster (Hidden on Mobile) -->
+<div class="hidden md:flex fixed top-0 right-margin-desktop h-full items-center z-50 pointer-events-none">
+<nav class="bg-surface border border-outline-variant rounded-xl p-2 flex flex-col gap-2 pointer-events-auto shadow-md">
+<a class="p-3 rounded-lg text-on-surface-variant hover:bg-surface-container flex items-center justify-center" href="#" title="Dashboard">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+</a>
+<a class="p-3 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center" href="#" title="Sensors">
+<span class="material-symbols-outlined" data-icon="sensors" data-weight="fill" style="font-variation-settings: 'FILL' 1;">sensors</span>
+</a>
+<a class="p-3 rounded-lg text-on-surface-variant hover:bg-surface-container flex items-center justify-center" href="#" title="AI Analysis">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</a>
+<a class="p-3 rounded-lg text-on-surface-variant hover:bg-surface-container flex items-center justify-center" href="#" title="Control">
+<span class="material-symbols-outlined" data-icon="settings_remote">settings_remote</span>
+</a>
+<a class="p-3 rounded-lg text-on-surface-variant hover:bg-surface-container flex items-center justify-center" href="#" title="Alerts">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</a>
+</nav>
+</div>
+</body></html>
